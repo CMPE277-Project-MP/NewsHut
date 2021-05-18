@@ -57,6 +57,9 @@ class NewsContent : AppCompatActivity() {
         author.text = "By Author: " + dataItemAuthor
         newsDetailsStory.text = dataItemContent
 
+//        val favList= viewModel._getfavoritesResponse
+//        favList.any{ object -> object.title == DataItemTitle }
+
         val toggle: ToggleButton = findViewById(R.id.toggleFavourite)
         toggle.setBackgroundResource(R.drawable.favgray);
         toggle.setOnCheckedChangeListener { _, isChecked ->
