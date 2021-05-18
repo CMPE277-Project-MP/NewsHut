@@ -11,6 +11,9 @@
         <item
             android:id="@+id/financeFragment"
             android:title="Finance" />
+        <item
+            android:id="@+id/postFragment"
+            android:title="My Posts" />
 <!--        <Button-->
 <!--            android:id="@+id/signoutButton"-->
 <!--            android:title="Sign out" />-->

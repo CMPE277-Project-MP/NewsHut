@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "37969145598",
+    "project_id": "cmpe277newsapp",
+    "storage_bucket": "cmpe277newsapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:37969145598:android:e82f00ca890cc23848ffaf",
+        "android_client_info": {
+          "package_name": "sjsu.cmpelkk.myappandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "37969145598-4bhnv7u76crg47bo0fnbicqsenaeoo0p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsk8S1ZWkC6A2yKAe3RKWzNyHWerboQfA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "37969145598-4bhnv7u76crg47bo0fnbicqsenaeoo0p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -52,4 +52,13 @@
             android:id="@+id/action_financeFragment_to_newsFragment"
             app:destination="@id/newsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/postFragment"
+        android:name="sjsu.cmpelkk.myappandroid.Network.PostFragment"
+        android:label="My Posts"
+        tools:layout="@layout/fragment_post" >
+        <action
+            android:id="@+id/action_postFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+    </fragment>
 </navigation>
