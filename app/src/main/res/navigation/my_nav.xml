@@ -3,40 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/newsFragment">
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="sjsu.cmpelkk.myappandroid.HomeFragment"
+        android:id="@+id/newsFragment"
+        android:name="sjsu.cmpelkk.myappandroid.Network.NewsFragment"
         android:label="Top News"
-        tools:layout="@layout/fragment_home">
+        tools:layout="@layout/news_fragment">
         <action
-            android:id="@+id/navigateToSecondFragment"
-            app:destination="@id/secondFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim" />
-        <action
-            android:id="@+id/action_homeFragment_to_postActivity"
+            android:id="@+id/action_newsFragment_to_postActivity"
             app:destination="@id/postActivity" />
         <action
-            android:id="@+id/action_homeFragment_to_favoritesFragment"
+            android:id="@+id/action_newsFragment_to_favoritesFragment"
             app:destination="@id/favoritesFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/secondFragment"
-        android:name="sjsu.cmpelkk.myappandroid.SecondFragment"
-        android:label="World News"
-        tools:layout="@layout/fragment_second">
         <action
-            android:id="@+id/navigateToHomeFragment"
-            app:destination="@id/homeFragment" />
-        <argument
-            android:name="number"
-            android:defaultValue="2"
-            app:argType="integer" />
-        <action
-            android:id="@+id/action_secondFragment_to_postActivity"
-            app:destination="@id/postActivity" />
+            android:id="@+id/action_newsFragment_to_sportsFragment"
+            app:destination="@id/sportsFragment" />
     </fragment>
     <activity
         android:id="@+id/postActivity"
@@ -49,17 +31,25 @@
         android:label="Favorites"
         tools:layout="@layout/fragment_favorites">
         <action
-            android:id="@+id/action_favoritesFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            android:id="@+id/action_favoritesFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/weatherFragment"
-        android:name="sjsu.cmpelkk.myappandroid.Network.WeatherFragment"
-        android:label="weather_fragment"
-        tools:layout="@layout/weather_fragment" />
+        android:id="@+id/sportsFragment"
+        android:name="sjsu.cmpelkk.myappandroid.Network.SportsFragment"
+        android:label="Sports News"
+        tools:layout="@layout/sports_fragment" >
+        <action
+            android:id="@+id/action_sportsFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/newsFragment"
-        android:name="sjsu.cmpelkk.myappandroid.Network.NewsFragment"
-        android:label="Top Headlines"
-        tools:layout="@layout/news_fragment" />
+        android:id="@+id/financeFragment"
+        android:name="sjsu.cmpelkk.myappandroid.Network.FinanceFragment"
+        android:label="Finance News"
+        tools:layout="@layout/finance_fragment" >
+        <action
+            android:id="@+id/action_financeFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+    </fragment>
 </navigation>

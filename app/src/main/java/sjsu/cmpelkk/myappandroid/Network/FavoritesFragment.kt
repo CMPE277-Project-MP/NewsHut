@@ -73,7 +73,7 @@ class FavoritesFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment SecondFragment.
+         * @return A new instance of fragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
@@ -88,9 +88,9 @@ class FavoritesFragment : Fragment() {
 }
 
 class FavoritesCardViewHolder(val cardView: CardView) : RecyclerView.ViewHolder(cardView) {
-    val title: TextView = cardView.findViewById(R.id.carditemtitletextView)
-    val story: TextView = cardView.findViewById(R.id.carditemdetailtext)
-    val image: ImageView = cardView.findViewById(R.id.cardimageView)
+    val title: TextView = cardView.findViewById(R.id.newsTitletextView)
+    val story: TextView = cardView.findViewById(R.id.newsDescriptionTextView)
+    val image: ImageView = cardView.findViewById(R.id.newsUrlToImageView)
     val placeHolderImage = "https://st2.depositphotos.com/1278966/7719/i/600/depositphotos_77195177-stock-photo-world-business-background.jpg"
     fun bind(oneitem: Article) {
         title.text = oneitem.title
@@ -131,18 +131,6 @@ class FavoritesCardViewHolder(val cardView: CardView) : RecyclerView.ViewHolder(
         }
         title.setTextColor(context.getColor(R.color.primaryDarkColor))
         story.setTextColor(context.getColor(R.color.secondaryDarkColor))
-
-        val toggle: ToggleButton = cardView.findViewById(R.id.toggleFavourite)
-        toggle.setBackgroundResource(R.drawable.favgray);
-        toggle.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                // The toggle is enabled
-                toggle.setBackgroundResource(R.drawable.favyellow);
-            } else {
-                // The toggle is disabled
-                toggle.setBackgroundResource(R.drawable.favgray);
-            }
-        }
     }
 }
 
@@ -151,7 +139,7 @@ class FavoritesCardAdapter(var data: List<Article>) : RecyclerView.Adapter<Favor
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoritesCardViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val view = layoutInflater
-            .inflate(R.layout.card_item_view, parent, false) as CardView
+            .inflate(R.layout.news_card_item_view, parent, false) as CardView
         return FavoritesCardViewHolder(view)
     }
     override fun getItemCount(): Int {

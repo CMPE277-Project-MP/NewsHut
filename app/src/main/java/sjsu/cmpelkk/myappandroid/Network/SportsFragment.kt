@@ -29,7 +29,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [NewsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class NewsFragment : Fragment() {
+class SportsFragment : Fragment() {
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -37,7 +37,7 @@ class NewsFragment : Fragment() {
     private var datalist: List<Article> = mutableListOf()
     lateinit var recyclerCard: RecyclerView
 
-    private lateinit var viewModel: NewsViewModel
+    private lateinit var viewModel: SportsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,53 +52,53 @@ class NewsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.news_fragment, container, false)
+        val view = inflater.inflate(R.layout.sports_fragment, container, false)
         return view
     }
 
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
-        recyclerCard = itemView.findViewById(R.id.newscardrecyclerview)
+        recyclerCard = itemView.findViewById(R.id.sportscardrecyclerview)
 
-        viewModel = ViewModelProviders.of(this).get(NewsViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(SportsViewModel::class.java)
 
         viewModel._response.observe(viewLifecycleOwner, Observer { newresponse ->
             datalist = newresponse //display the raw json data
-            recyclerCard.adapter = NewsCardAdapter(datalist) //(carddefaultdata)
+            recyclerCard.adapter = SportsCardAdapter(datalist) //(carddefaultdata)
         })
 
 
-        val newsSearchView: SearchView = itemView.findViewById(R.id.newsSearchView) as SearchView // inititate a search view
-        val id: Int = newsSearchView.getContext()
-            .getResources()
-            .getIdentifier("android:id/search_src_text", null, null)
-        val textView = newsSearchView.findViewById(id) as TextView
-        textView.setTextColor(Color.WHITE)
-
-        newsSearchView.setOnQueryTextListener(object :
-            SearchView.OnQueryTextListener {
-            override fun onQueryTextChange(newText: String): Boolean {
-                if (newText == null || newText.isEmpty()) {
-                    viewModel.getNewsProperties()
-                    viewModel._response.observe(viewLifecycleOwner, Observer { newresponse ->
-                        datalist = newresponse //display the raw json data
-                        recyclerCard.adapter = NewsCardAdapter(datalist) //(carddefaultdata)
-                    })
-                    return false
-                }
-                return false
-            }
-
-            override fun onQueryTextSubmit(query: String): Boolean {
-                viewModel.getNewsPropertiesOnSearch(query)
-                viewModel._response.observe(viewLifecycleOwner, Observer { newresponse ->
-                    datalist = newresponse //display the raw json data
-                    recyclerCard.adapter = NewsCardAdapter(datalist) //(carddefaultdata)
-                })
-                return false
-            }
-        }
-        )
+//        val newsSearchView: SearchView = itemView.findViewById(R.id.newsSearchView) as SearchView // inititate a search view
+//        val id: Int = newsSearchView.getContext()
+//            .getResources()
+//            .getIdentifier("android:id/search_src_text", null, null)
+//        val textView = newsSearchView.findViewById(id) as TextView
+//        textView.setTextColor(Color.WHITE)
+//
+//        newsSearchView.setOnQueryTextListener(object :
+//            SearchView.OnQueryTextListener {
+//            override fun onQueryTextChange(newText: String): Boolean {
+//                if (newText == null || newText.isEmpty()) {
+//                    viewModel.getNewsProperties()
+//                    viewModel._response.observe(viewLifecycleOwner, Observer { newresponse ->
+//                        datalist = newresponse //display the raw json data
+//                        recyclerCard.adapter = NewsCardAdapter(datalist) //(carddefaultdata)
+//                    })
+//                    return false
+//                }
+//                return false
+//            }
+//
+//            override fun onQueryTextSubmit(query: String): Boolean {
+//                viewModel.getNewsPropertiesOnSearch(query)
+//                viewModel._response.observe(viewLifecycleOwner, Observer { newresponse ->
+//                    datalist = newresponse //display the raw json data
+//                    recyclerCard.adapter = NewsCardAdapter(datalist) //(carddefaultdata)
+//                })
+//                return false
+//            }
+//        }
+//        )
 
     }
 
@@ -114,7 +114,7 @@ class NewsFragment : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            NewsFragment().apply {
+            SportsFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
@@ -123,7 +123,7 @@ class NewsFragment : Fragment() {
     }
 }
 
-class NewsCardViewHolder(val cardView: CardView) : RecyclerView.ViewHolder(cardView) {
+class SportsCardViewHolder(val cardView: CardView) : RecyclerView.ViewHolder(cardView) {
     val title: TextView = cardView.findViewById(R.id.newsTitletextView)
     val story: TextView = cardView.findViewById(R.id.newsDescriptionTextView)
     val image: ImageView = cardView.findViewById(R.id.newsUrlToImageView)
@@ -177,22 +177,22 @@ class NewsCardViewHolder(val cardView: CardView) : RecyclerView.ViewHolder(cardV
 
 
 
-class NewsCardAdapter(var data: List<Article>) : RecyclerView.Adapter<NewsCardViewHolder>()
+class SportsCardAdapter(var data: List<Article>) : RecyclerView.Adapter<SportsCardViewHolder>()
 {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsCardViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SportsCardViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
 
         val view = layoutInflater
             .inflate(R.layout.news_card_item_view, parent, false) as CardView
 
-        return NewsCardViewHolder(view)
+        return SportsCardViewHolder(view)
     }
 
     override fun getItemCount(): Int {
         return data.size
     }
 
-    override fun onBindViewHolder(holder: NewsCardViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SportsCardViewHolder, position: Int) {
         holder.bind(data[position])
     }
 

@@ -4,16 +4,13 @@
     <group >
         <item
             android:id="@+id/newsFragment"
-            android:title="News" />
-        <item
-            android:id="@+id/weatherFragment"
-            android:title="Weather" />
-        <item
-            android:id="@+id/homeFragment"
             android:title="Top News" />
         <item
-            android:id="@+id/secondFragment"
-            android:title="World News" />
+            android:id="@+id/sportsFragment"
+            android:title="Sports" />
+        <item
+            android:id="@+id/financeFragment"
+            android:title="Finance" />
 <!--        <Button-->
 <!--            android:id="@+id/signoutButton"-->
 <!--            android:title="Sign out" />-->

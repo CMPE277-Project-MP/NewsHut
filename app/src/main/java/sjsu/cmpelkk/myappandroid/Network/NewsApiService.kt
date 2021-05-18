@@ -38,16 +38,6 @@ private val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .build()
 
-object NULL_TO_EMPTY_STRING_ADAPTER {
-    @FromJson
-    fun fromJson(reader: JsonReader): String {
-        if (reader.peek() != JsonReader.Token.NULL) {
-            return reader.nextString()
-        }
-        reader.nextNull<Unit>()
-        return ""
-    }
-}
 /**
  * A public interface that exposes the [getProperties] method
  */
@@ -63,7 +53,7 @@ interface NewsApiService {
 
 /**
  * A public Api object that exposes the lazy-initialized Retrofit service
- * each time your app calls WeatherApi.retrofitService, it will get a singleton Retrofit object that implements ApiService.
+ * each time your app calls Api.retrofitService, it will get a singleton Retrofit object that implements ApiService.
  */
 object NewsApi {
     val retrofitService : NewsApiService by lazy {

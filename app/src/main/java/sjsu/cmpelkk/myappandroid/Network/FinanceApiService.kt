@@ -5,14 +5,14 @@ import com.squareup.moshi.JsonReader
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.Deferred
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
-import retrofit2.http.*
+import retrofit2.http.GET
+import retrofit2.http.Query
 
-private const val BASE_URL = "https://bfknj14bxi.execute-api.us-east-1.amazonaws.com/dev/"//
+private const val BASE_URL = "https://newsapi.org/v2/"//
 
 
 /**
@@ -20,7 +20,7 @@ private const val BASE_URL = "https://bfknj14bxi.execute-api.us-east-1.amazonaws
  * full Kotlin compatibility.
  */
 private val moshi = Moshi.Builder()
-    .add(NULL_TO_EMPTY_STRING_ADAPTER1)
+    .add(NULL_TO_EMPTY_STRING_ADAPTER)
     .add(KotlinJsonAdapterFactory())
     .build()
 
@@ -37,37 +37,22 @@ private val retrofit = Retrofit.Builder()
     .addConverterFactory(MoshiConverterFactory.create(moshi))
     .baseUrl(BASE_URL)
     .build()
-
-object NULL_TO_EMPTY_STRING_ADAPTER1 {
-    @FromJson
-    fun fromJson(reader: JsonReader): String {
-        if (reader.peek() != JsonReader.Token.NULL) {
-            return reader.nextString()
-        }
-        reader.nextNull<Unit>()
-        return ""
-    }
-}
 /**
  * A public interface that exposes the [getProperties] method
  */
-interface FavoritesApiService {
-    @Headers("Content-Type: application/json")
-    @POST("addtofavorites")
-    fun addToFavorites(@Body dataItem: String):
-            Call<Article>
+interface FinanceApiService {
+    @GET("everything")
+    fun getFinanceNews(@Query("q") q: String, @Query("apiKey") apiKey: String):
+            Call<TopHeadlines>
 
-    @GET("getfavorites")
-    fun getfavorites():
-            Call<List<Article>>
 }
 
 /**
  * A public Api object that exposes the lazy-initialized Retrofit service
  * each time your app calls Api.retrofitService, it will get a singleton Retrofit object that implements ApiService.
  */
-object FavoritesApi {
-    val retrofitService : FavoritesApiService by lazy {
-        retrofit.create(FavoritesApiService::class.java) }
+object FinanceApi {
+    val retrofitService : FinanceApiService by lazy {
+        retrofit.create(FinanceApiService::class.java) }
     //The Retrofit create() method creates the Retrofit service itself with the ApiService interface.
 }
