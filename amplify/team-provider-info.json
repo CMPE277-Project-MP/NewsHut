@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-newshut-dev-173237-authRole",
+      "UnauthRoleArn": "arn:aws:iam::311335242921:role/amplify-newshut-dev-173237-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::311335242921:role/amplify-newshut-dev-173237-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-newshut-dev-173237-deployment",
+      "UnauthRoleName": "amplify-newshut-dev-173237-unauthRole",
+      "StackName": "amplify-newshut-dev-173237",
+      "StackId": "arn:aws:cloudformation:us-east-1:311335242921:stack/amplify-newshut-dev-173237/8df07ba0-b770-11eb-9e17-1212f512cf43",
+      "AmplifyAppId": "d1l7jkyp9awyyi"
+    },
+    "categories": {
+      "auth": {
+        "newshut389e488f": {}
+      }
+    }
+  }
+}

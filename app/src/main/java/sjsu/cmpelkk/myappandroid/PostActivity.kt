@@ -1,17 +1,31 @@
 package sjsu.cmpelkk.myappandroid
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment.DIRECTORY_DOWNLOADS
+import android.provider.MediaStore
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.amplifyframework.core.Amplify.Storage
 import sjsu.cmpelkk.myappandroid.myutil.imageUtil
 import java.io.Serializable
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import com.amplifyframework.api.ApiException
+import com.amplifyframework.api.rest.RestResponse
+import com.amplifyframework.core.Amplify
+import com.amplifyframework.storage.options.StorageDownloadFileOptions
+import com.amplifyframework.util.Environment
+import sjsu.cmpelkk.myappandroid.myutil.S3File
+import java.io.File
 
 
 const val EXTRA_MESSAGE = "sjsu.cmpelkk.MyAppAndroid.MESSAGE"
@@ -69,10 +83,67 @@ class PostActivity : AppCompatActivity() {
         //val mynewdata = DataItem(nametext.text.toString(), titletextView.text.toString(),textmultiline.text.toString(),false,0, R.drawable.imageupload)
         val mynewdata = DataItem(nametext.text.toString(), titletextView.text.toString(), textmultiline.text.toString(), false, 0, newimageuri.toString())
         data.putExtra("NewDataItem", mynewdata as Serializable)
+
+//        upload file to s3 bucket
+            uploadFile(newimageuri!!)
         //set a result code, It is either RESULT_OK or RESULT_CANCELLED
         setResult(RESULT_OK, data)
         //Close the activity
         finish()
+    }
+
+    private fun uploadFile(Uri: Uri) {
+        Amplify().intializeAmplify(this@PostActivity);
+        println("Upload: $Uri")
+        val exampleInputStream = getContentResolver().openInputStream(Uri)
+        println("Upload: $exampleInputStream")
+//        val randomNumber = (1000..9999).random()
+
+        exampleInputStream?.let {
+            Amplify.Storage.uploadInputStream(
+                 nametext.text.toString() + "_" + titletextView.text.toString(),
+                it,
+                { result -> Toast.makeText(this, "News Posted successfully:" + result.key, Toast.LENGTH_SHORT).show() },
+                { error -> Log.e("MyAmplifyApp", "Upload failed", error) }
+            )
+        }
+
+    }
+
+
+    private  fun downloadfiles(file: ArrayList<String>)  {
+
+//        val downloadFolder = " " //getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
+//
+//        val filepaths = arrayListOf<S3File>()
+//        file.size
+//        file.forEach { item-> val randomNumber = (1000..9999).random()
+//
+//            Amplify.Storage.downloadFile(
+//                item,
+//                File("$downloadFolder/download$randomNumber.jpg"),
+//                StorageDownloadFileOptions.defaultInstance(),
+//                { progress ->
+//                    Log.d("MyAmplifyApp", "Fraction completed: ${progress.fractionCompleted}")
+//                },
+//                { result -> Log.d("MyAmplifyApp", "Successfully downloaded: ${result.getFile().name} Path: ${result.file.absolutePath}")
+////                    downloadprogress(result.getFile().name)
+//                    val fileobj = S3File(
+//                        path = result.file.absolutePath,
+//                        key = result.file.name,
+//                    )
+//                    filepaths += fileobj
+//                    println("filelists${filepaths.size} ${file.size}")
+////                    if(filepaths.size == file.size){
+////                        populaterv(filepaths)
+////                    }
+//                },
+//                { error -> Log.d("MyAmplifyApp", "Download Failure", error) }
+//            )
+//
+//        }
+
+
     }
 
     private fun changeImage() {

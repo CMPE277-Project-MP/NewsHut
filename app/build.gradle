@@ -2,16 +2,17 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-kapt'
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "sjsu.cmpelkk.myappandroid"
-        minSdkVersion 29
-        targetSdkVersion 30
+        minSdkVersion 21
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
@@ -29,6 +30,7 @@ android {
 
     }
     compileOptions {
+        coreLibraryDesugaringEnabled=true
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -85,4 +87,20 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
 
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    // aws
+    implementation 'com.amazonaws:aws-android-sdk-core:2.9.2'
+    implementation 'com.amazonaws:aws-android-sdk-ddb:2.9.2'
+    implementation 'com.amazonaws:aws-android-sdk-ddb-document:2.4.4'
+    implementation ('com.amazonaws:aws-android-sdk-mobile-client:2.6.7@aar') { transitive = true }
+    implementation 'com.amazonaws:aws-android-sdk-s3:2.6.+'
+    implementation 'com.amazonaws:aws-android-sdk-cognito:2.6.+'
+    kapt "com.android.databinding:compiler:3.0.1"
+    implementation 'com.amplifyframework:core:1.6.4'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.1'
+    implementation 'com.amplifyframework:aws-storage-s3:1.6.4'
+    implementation 'com.amplifyframework:aws-auth-cognito:1.6.4'
+    implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
+//    implementation group: 'com.amazonaws', name: 'aws-java-sdk-lambda', version: '1.11.546'
+
 }

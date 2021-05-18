@@ -26,11 +26,14 @@ import androidx.navigation.ui.*
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.amazonaws.mobile.client.AWSMobileClient
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import sjsu.cmpelkk.myappandroid.myutil.SwipeToDeleteCallback
 import java.io.Serializable
+import com.amazonaws.services.*
+import com.amplifyframework.core.Amplify
 
 const val POST_REQUEST_CODE = 32
 class MainActivity : AppCompatActivity() {
@@ -45,7 +48,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+//        AWSMobileClient.getInstance().initialize(this).execute()
+        Amplify().intializeAmplify(this@MainActivity);
         drawerLayout = findViewById(R.id.drawer_layout)
         navController = findNavController(R.id.fragment)
         appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)

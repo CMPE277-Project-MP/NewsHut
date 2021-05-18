@@ -1,0 +1,16 @@
+{
+  "auth": {
+    "newshut389e488f": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  },
+  "storage": {
+    "cmpe277newsapp": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation"
+    }
+  }
+}
