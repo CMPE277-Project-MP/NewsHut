@@ -58,7 +58,7 @@ interface FavoritesApiService {
             Call<Article>
 
     @GET("getfavorites")
-    fun getfavorites():
+    fun getfavorites(@Query("emailId")emailId:String):
             Call<List<Article>>
 }
 

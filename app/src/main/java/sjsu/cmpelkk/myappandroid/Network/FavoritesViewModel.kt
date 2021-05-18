@@ -38,8 +38,8 @@ class FavoritesViewModel : ViewModel() {
         )
     }
 
-    fun getfavorites() {
-        FavoritesApi.retrofitService.getfavorites().enqueue(
+    fun getfavorites(emailId:String) {
+        FavoritesApi.retrofitService.getfavorites(emailId).enqueue(
             object : Callback<List<Article>> {
                 override fun onFailure(call: Call<List<Article>>, t: Throwable) {
                     //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

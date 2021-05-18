@@ -13,6 +13,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
 import sjsu.cmpelkk.myappandroid.NewsContent
 import sjsu.cmpelkk.myappandroid.R
@@ -42,6 +45,7 @@ class FavoritesFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+//        val user = auth().currentUSer
     }
 
     override fun onCreateView(
@@ -58,7 +62,7 @@ class FavoritesFragment : Fragment() {
         recyclerCard = itemView.findViewById(R.id.favoritesrecyclerview)
 
         viewModel = ViewModelProviders.of(this).get(FavoritesViewModel::class.java)
-        viewModel.getfavorites()
+        viewModel.getfavorites(FirebaseAuth.getInstance().currentUser?.email.toString())
         viewModel._getfavoritesResponse.observe(viewLifecycleOwner, Observer { newresponse ->
             datalist = newresponse //display the raw json data
             recyclerCard.adapter = FavoritesCardAdapter(datalist) //(carddefaultdata)

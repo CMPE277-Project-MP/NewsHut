@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
 import sjsu.cmpelkk.myappandroid.NewsContent
 import sjsu.cmpelkk.myappandroid.R
@@ -58,8 +59,8 @@ class PostFragment : Fragment() {
         recyclerCard = itemView.findViewById(R.id.postrecyclerview)
 
         viewModel = ViewModelProviders.of(this).get(PostViewModel::class.java)
-        viewModel.getPost()
-        viewModel._response.observe(viewLifecycleOwner, Observer { newresponse ->
+        viewModel.getpost(FirebaseAuth.getInstance().currentUser?.email.toString())
+        viewModel._getUserPostsResponse.observe(viewLifecycleOwner, Observer { newresponse ->
             datalist = newresponse //display the raw json data
             recyclerCard.adapter = PostCardAdapter(datalist) //(carddefaultdata)
         })

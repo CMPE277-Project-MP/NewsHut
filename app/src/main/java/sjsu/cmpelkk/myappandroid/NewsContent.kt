@@ -6,6 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.ToggleButton
 import androidx.lifecycle.ViewModelProviders
+import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
 import org.json.JSONObject
 import sjsu.cmpelkk.myappandroid.Network.FavoritesViewModel
@@ -23,6 +24,7 @@ class NewsContent : AppCompatActivity() {
         val dataItemAuthor: String? = intent.extras?.get("DataItemAuthor") as? String
         val dataItemContent: String? = intent.extras?.get("DataItemContent") as? String
         val DataItemDescription: String? = intent.extras?.get("DataItemDescription") as? String
+        val emailId = FirebaseAuth.getInstance().currentUser?.email.toString()
 
         val favObject= JSONObject()
         favObject.put("author", dataItemAuthor)
@@ -30,7 +32,7 @@ class NewsContent : AppCompatActivity() {
         favObject.put("content", dataItemContent)
         favObject.put("urlToImage", dataItemUrl)
         favObject.put("description", DataItemDescription)
-        favObject.put("username", "prajakta.joshi@sjsu.edu")
+        favObject.put("username", emailId)
 
 
 

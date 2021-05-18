@@ -13,18 +13,27 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.*
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.amplifyframework.core.Amplify.Storage
 import sjsu.cmpelkk.myappandroid.myutil.imageUtil
 import java.io.Serializable
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProviders
 import com.amplifyframework.api.ApiException
 import com.amplifyframework.api.rest.RestOptions
 import com.amplifyframework.api.rest.RestResponse
 import com.amplifyframework.core.Amplify
 import com.amplifyframework.storage.options.StorageDownloadFileOptions
 import com.amplifyframework.util.Environment
+import com.google.firebase.auth.FirebaseAuth
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import sjsu.cmpelkk.myappandroid.Firebase.LoginViewModel
+import sjsu.cmpelkk.myappandroid.Network.*
 import sjsu.cmpelkk.myappandroid.myutil.S3File
 import java.io.File
 
@@ -39,7 +48,8 @@ class PostActivity : AppCompatActivity() {
     lateinit var titletextView: TextView
     lateinit var nametext: TextView
     lateinit var imageuri: String //Uri
-
+    lateinit var emailid: String
+    lateinit var viewModel: PostViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post)
@@ -76,6 +86,8 @@ class PostActivity : AppCompatActivity() {
     private fun senddataBack() {
         //create an instance of an Intent object.
         val data = Intent()
+        emailid = FirebaseAuth.getInstance().currentUser?.email.toString()
+
         //set the value/data to pass back
         data.setData(Uri.parse(titletextView.text.toString()))
         val bitmap = (myImage.getDrawable() as BitmapDrawable).bitmap
@@ -87,6 +99,21 @@ class PostActivity : AppCompatActivity() {
 
 //        upload file to s3 bucket
             uploadFile(newimageuri!!)
+//
+
+//        insert the data in db
+        val imageurl:String = "https://d297hqcfwf28mv.cloudfront.net/public/" + mynewdata.name.toString() + "_" + mynewdata.title.toString()
+        val userPost= JSONObject()
+        userPost.put("author", mynewdata.name)
+        userPost.put("title", mynewdata.title)
+        userPost.put("content", mynewdata.story)
+        userPost.put("urlToImage", imageurl)
+        userPost.put("description", "DataItemDescription")
+        userPost.put("username", emailid)
+
+        viewModel = ViewModelProviders.of(this).get(PostViewModel::class.java)
+        viewModel.createuserposts(userPost.toString())
+
         //set a result code, It is either RESULT_OK or RESULT_CANCELLED
         setResult(RESULT_OK, data)
         //Close the activity

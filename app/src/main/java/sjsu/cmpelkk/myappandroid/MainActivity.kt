@@ -62,6 +62,11 @@ class MainActivity : AppCompatActivity() {
         val userId = intent.getStringExtra("user_id")
         val emailId = intent.getStringExtra("email_id")
 
+//        set the intent of email id to the post activity
+        val intent = Intent(this@MainActivity, PostActivity::class.java)
+//        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        intent.putExtra("email_id", emailId)
+
         Amplify().intializeAmplify(this@MainActivity);
         drawerLayout = findViewById(R.id.drawer_layout)
         navController = findNavController(R.id.fragment)

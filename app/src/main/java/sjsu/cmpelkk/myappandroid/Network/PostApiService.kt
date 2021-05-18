@@ -12,7 +12,8 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.*
 
-private const val BASE_URL = "https://bfknj14bxi.execute-api.us-east-1.amazonaws.com/dev/"//
+//aws api gateway url for creating and fetching user created posts
+private const val BASE_URL = "https://nuytoo6odb.execute-api.us-east-1.amazonaws.com/dev/"
 
 
 /**
@@ -42,9 +43,15 @@ private val retrofit = Retrofit.Builder()
  * A public interface that exposes the [getProperties] method
  */
 interface PostApiService {
-    @GET("getPost")
-    fun getPost():
+    @GET("getpost")
+    fun getpost(@Query("emailId") emailId :String):
             Call<List<Article>>
+
+    @Headers("Content-Type: application/json")
+    @POST("createuserposts")
+    fun createuserposts(@Body dataItem: String):
+            Call<Article>
+
 }
 
 /**
