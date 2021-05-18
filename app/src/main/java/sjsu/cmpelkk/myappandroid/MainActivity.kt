@@ -14,6 +14,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -34,6 +35,7 @@ import sjsu.cmpelkk.myappandroid.myutil.SwipeToDeleteCallback
 import java.io.Serializable
 import com.amazonaws.services.*
 import com.amplifyframework.core.Amplify
+import sjsu.cmpelkk.myappandroid.Firebase.LoginViewModel
 
 const val POST_REQUEST_CODE = 32
 class MainActivity : AppCompatActivity() {
@@ -44,11 +46,22 @@ class MainActivity : AppCompatActivity() {
     lateinit var navigationView: NavigationView
     lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var listner: NavController.OnDestinationChangedListener
+//    private val loginviewModel by viewModels<LoginViewModel>()
+    private lateinit var headerView: View
+
+    companion object {
+        const val TAG = "MainActivity"
+        const val SIGN_IN_RESULT_CODE = 1001
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        AWSMobileClient.getInstance().initialize(this).execute()
+
+        //get the user details via the intent
+        val userId = intent.getStringExtra("user_id")
+        val emailId = intent.getStringExtra("email_id")
+
         Amplify().intializeAmplify(this@MainActivity);
         drawerLayout = findViewById(R.id.drawer_layout)
         navController = findNavController(R.id.fragment)
@@ -60,7 +73,9 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView = findViewById(R.id.bottom_nav_view)
         bottomNavigationView.setupWithNavController(navController)
 
-    }
+        }
+
+
 
     override fun onSupportNavigateUp(): Boolean {
         navController = findNavController(R.id.fragment)

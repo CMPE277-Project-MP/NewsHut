@@ -20,6 +20,7 @@ import java.io.Serializable
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.amplifyframework.api.ApiException
+import com.amplifyframework.api.rest.RestOptions
 import com.amplifyframework.api.rest.RestResponse
 import com.amplifyframework.core.Amplify
 import com.amplifyframework.storage.options.StorageDownloadFileOptions

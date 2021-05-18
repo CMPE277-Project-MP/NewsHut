@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'androidx.navigation.safeargs.kotlin'
     id 'kotlin-kapt'
+    id  'com.google.gms.google-services'
 }
 
 android {
@@ -89,6 +90,7 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
 
     // aws
+    implementation 'com.amplifyframework:amplify-tools-gradle-plugin:1.0.2'
     implementation 'com.amazonaws:aws-android-sdk-core:2.9.2'
     implementation 'com.amazonaws:aws-android-sdk-ddb:2.9.2'
     implementation 'com.amazonaws:aws-android-sdk-ddb-document:2.4.4'
@@ -102,5 +104,19 @@ dependencies {
     implementation 'com.amplifyframework:aws-auth-cognito:1.6.4'
     implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
 //    implementation group: 'com.amazonaws', name: 'aws-java-sdk-lambda', version: '1.11.546'
+
+    //google firebase
+    // Import the Firebase BoM
+    implementation platform('com.google.firebase:firebase-bom:28.0.1')
+
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+
+    // Declare the dependency for the Firebase SDK for Google Analytics
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    // Declare the dependencies for any other desired Firebase products
+    // For example, declare the dependencies for Firebase Authentication and Cloud Firestore
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.firebase:firebase-firestore-ktx'
 
 }
