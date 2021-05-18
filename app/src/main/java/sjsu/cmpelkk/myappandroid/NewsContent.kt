@@ -30,7 +30,7 @@ class NewsContent : AppCompatActivity() {
         favObject.put("content", dataItemContent)
         favObject.put("urlToImage", dataItemUrl)
         favObject.put("description", DataItemDescription)
-        favObject.put("username", "prajakta")
+        favObject.put("username", "prajakta.joshi@sjsu.edu")
 
 
 
