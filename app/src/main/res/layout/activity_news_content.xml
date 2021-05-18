@@ -7,7 +7,7 @@
     tools:context=".Network.NewsContent">
 
     <TextView
-        android:id="@+id/newsDetailsTitle"
+        android:id="@+id/newsContentTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -22,19 +22,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/newsDetailsAuthor"
+        android:id="@+id/newsContentAuthor"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/newsDetailsTitle"
+        app:layout_constraintEnd_toEndOf="@+id/newsContentTitle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newsDetailsTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/newsContentTitle" />
 
     <ImageView
-        android:id="@+id/newsDetailsImage"
+        android:id="@+id/newsContentImage"
         android:layout_width="wrap_content"
         android:layout_height="220dp"
         android:layout_marginStart="20dp"
@@ -42,14 +42,14 @@
         android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newsDetailsAuthor"
+        app:layout_constraintTop_toBottomOf="@+id/newsContentAuthor"
         tools:srcCompat="@tools:sample/avatars" />
 
     <ScrollView
         android:layout_width="419dp"
         android:layout_height="458dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/newsDetailsImage">
+        app:layout_constraintTop_toBottomOf="@+id/newsContentImage">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -57,7 +57,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/newsDetailsStory"
+                android:id="@+id/newsContentStory"
                 android:layout_width="match_parent"
                 android:layout_height="844dp"
                 android:paddingLeft="20dp"

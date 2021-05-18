@@ -160,6 +160,8 @@ class NewsCardViewHolder(val cardView: CardView) : RecyclerView.ViewHolder(cardV
                 putExtra("DataItemContent", oneitem.content)
                 //get the object with: val object = intent.extras.get("DataItem") as DataItem
             }
+
+
             context.startActivity(intent)
         }
         //header.setTextColor(Color.parseColor("#ffffff"))
