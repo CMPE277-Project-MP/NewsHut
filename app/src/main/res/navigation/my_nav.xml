@@ -19,8 +19,8 @@
             android:id="@+id/action_homeFragment_to_postActivity"
             app:destination="@id/postActivity" />
         <action
-            android:id="@+id/action_homeFragment_to_favouritesFragment"
-            app:destination="@id/favouritesFragment" />
+            android:id="@+id/action_homeFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
     </fragment>
     <fragment
         android:id="@+id/secondFragment"
@@ -44,12 +44,12 @@
         android:label="Post "
         tools:layout="@layout/activity_post" />
     <fragment
-        android:id="@+id/favouritesFragment"
-        android:name="sjsu.cmpelkk.myappandroid.FavouritesFragment"
-        android:label="Favourites"
-        tools:layout="@layout/fragment_favourites">
+        android:id="@+id/favoritesFragment"
+        android:name="sjsu.cmpelkk.myappandroid.Network.FavoritesFragment"
+        android:label="Favorites"
+        tools:layout="@layout/fragment_favorites">
         <action
-            android:id="@+id/action_favouritesFragment_to_homeFragment"
+            android:id="@+id/action_favoritesFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
     <fragment

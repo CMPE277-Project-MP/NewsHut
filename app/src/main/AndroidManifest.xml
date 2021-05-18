@@ -24,11 +24,12 @@
         <activity
             android:name=".NewsDetails"
             android:label="News Details"
-            android:parentActivityName=".MainActivity" /> <!-- <activity -->
-        <!-- android:name=".Network.NewsContent" -->
-        <!-- android:label="News Details" -->
-        <!-- android:parentActivityName=".MainActivity" -->
-        <!-- ></activity> -->
+            android:parentActivityName=".MainActivity" />
+         <activity
+             android:name=".NewsContent"
+             android:label="News Details"
+             android:parentActivityName=".MainActivity"
+         ></activity>
         <activity
             android:name=".PostActivity"
             android:label="Post News"
