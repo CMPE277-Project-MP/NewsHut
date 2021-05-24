@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyAppAndroid</string>
+    <string name="app_name">NewsHut</string>
     <string name="firstlabel">Please post your news here</string>
     <string name="TextfieldhintName">Name</string>
     <string name="Buttonsend">Send</string>

@@ -125,12 +125,12 @@ class NewsFragment : Fragment() {
 
 class NewsCardViewHolder(val cardView: CardView) : RecyclerView.ViewHolder(cardView) {
     val title: TextView = cardView.findViewById(R.id.newsTitletextView)
-    val story: TextView = cardView.findViewById(R.id.newsDescriptionTextView)
+    // val story: TextView = cardView.findViewById(R.id.newsDescriptionTextView)
     val image: ImageView = cardView.findViewById(R.id.newsUrlToImageView)
     val placeHolderImage = "https://st2.depositphotos.com/1278966/7719/i/600/depositphotos_77195177-stock-photo-world-business-background.jpg"
     fun bind(oneitem: Article) {
         title.text = oneitem.title
-        story.text = oneitem.description
+        // story.text = oneitem.description
 
         if (oneitem.urlToImage == null || oneitem.urlToImage.isEmpty()) {
             Picasso.get()
@@ -169,7 +169,7 @@ class NewsCardViewHolder(val cardView: CardView) : RecyclerView.ViewHolder(cardV
         //header.setTextColor(Color.parseColor("#ffffff"))
         title.setTextColor(context.getColor(R.color.primaryDarkColor))
         //description.setTextColor(Color.parseColor("#ffa270"))
-        story.setTextColor(context.getColor(R.color.secondaryDarkColor))
+        // story.setTextColor(context.getColor(R.color.secondaryDarkColor))
 
         }
 
