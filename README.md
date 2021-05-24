@@ -79,7 +79,7 @@ User posted story related pictures are stored in aws s3 bucket
 - <img src ="https://user-images.githubusercontent.com/2658837/119383410-24893000-bc78-11eb-8cea-3bb2d8eb8f35.png" width="300" height="600"/>
 
 - posted stories
-- <img src ="https://user-images.githubusercontent.com/2658837/119383420-28b54d80-bc78-11eb-890b-d8888eaea269.png" width="300" height="600"/>
+- ![image](https://user-images.githubusercontent.com/2658837/119384299-564ec680-bc79-11eb-8c89-d82b18abbc08.png)
 
 
 Reference Links:
@@ -87,17 +87,7 @@ Reference Links:
 ●	Firebase - https://firebase.google.com/docs/android/setup#console
  
 
-
-
-
-
-
-
-
 Git repo: https://github.com/CMPE277-Project-MP/NewsHut.git
-
-Video Demo (Google drive link):
-https://drive.google.com/drive/folders/1xjmdBrOqP4y04YCnXnQ31YgCyCt8UMqw?usp=sharing 
 
 Contributions:
 ●	Mamatha Guntu : 
