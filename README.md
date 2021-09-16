@@ -89,9 +89,10 @@ Reference Links:
 Git repo: https://github.com/CMPE277-Project-MP/NewsHut.git
 
 Contributions:
+
 ●	Mamatha Guntu : 
 
--	Firebase authentication for register, login
+-	Firebase authentication - user registration , login, logout
 -	Detail view of a selected news article
 -	Post a story to the News App
 
