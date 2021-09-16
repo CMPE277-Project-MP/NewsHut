@@ -90,14 +90,18 @@ Git repo: https://github.com/CMPE277-Project-MP/NewsHut.git
 
 Contributions:
 ●	Mamatha Guntu : 
-○	Firebase authentication for register, login
-○	Detail view of a selected news article
-○	Post a story to the News App
+
+-	Firebase authentication for register, login
+-	Detail view of a selected news article
+-	Post a story to the News App
+
 ●	Prajakta Joshi: 
-○	Listing news in Home screen based on different categories-sports
-○	Mark news as favorites,
-○	Search News based on Keywords
+
+-	Listing news in Home screen based on different categories-sports
+-	Mark news as favorites,
+-	Search News based on Keywords
 
 Reference Links:
 ●	Recycler view - https://developer.android.com/guide/topics/ui/layout/recyclerview
+
 ●	Firebase - https://firebase.google.com/docs/android/setup#console
